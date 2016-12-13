@@ -20,7 +20,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Profile.OnFragmentInteractionListener, Pembelian.OnFragmentInteractionListener,
-whislist.OnFragmentInteractionListener, Contact.OnFragmentInteractionListener, History.OnFragmentInteractionListener{
+whislist.OnFragmentInteractionListener, Contact.OnFragmentInteractionListener, History.OnFragmentInteractionListener, Daftar.OnFragmentInteractionListener,
+Home.OnFragmentInteractionListener{
     DrawerLayout drawerLayout;
     CollapsingToolbarLayout collapsingToolbarLayout;
 
