@@ -1,6 +1,7 @@
 package com.masbie.papb_pa;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -31,15 +32,16 @@ Home.OnFragmentInteractionListener{
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//
+//        SharedPreferences pref = getApplicationContext().getSharedPreferences("login", 0);
+//        if(pref.getBoolean("akses", true)){
+//            Intent intent = new Intent(this, MainActivity.class);
+//            this.startActivity(intent);
+//        }
+//        if(pref.getBoolean("pertama", true)){
+//            Intent intent = new Intent(this, Splash.class);
+//            this.startActivity(intent);
+//        }
         if (savedInstanceState == null) {
             Fragment fragment = null;
             Class fragmentClass = null;
