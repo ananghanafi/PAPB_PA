@@ -21,8 +21,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Profile.OnFragmentInteractionListener, Pembelian.OnFragmentInteractionListener,
-whislist.OnFragmentInteractionListener, Contact.OnFragmentInteractionListener, History.OnFragmentInteractionListener, Daftar.OnFragmentInteractionListener,
-Home.OnFragmentInteractionListener{
+        whislist.OnFragmentInteractionListener, Contact.OnFragmentInteractionListener, History.OnFragmentInteractionListener, Daftar.OnFragmentInteractionListener,
+        Home.OnFragmentInteractionListener, Keluar.OnFragmentInteractionListener {
     DrawerLayout drawerLayout;
     CollapsingToolbarLayout collapsingToolbarLayout;
 
@@ -91,12 +91,12 @@ Home.OnFragmentInteractionListener{
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -126,6 +126,12 @@ Home.OnFragmentInteractionListener{
         } else if (id == R.id.nav_history) {
             fragmentClass = History.class;
             setTitle("History");
+        } else if (id == R.id.nav_about) {
+            fragmentClass = Tentang.class;
+            setTitle("Tentang");
+        } else if (id == R.id.nav_exit) {
+            fragmentClass = Keluar.class;
+            setTitle("Test");
         }
 
 
@@ -139,3 +145,4 @@ Home.OnFragmentInteractionListener{
 
     }
 }
+
