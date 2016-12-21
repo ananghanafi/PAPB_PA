@@ -1,13 +1,166 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.masbie.papb_pa.Daftar">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/profile"
+            android:id="@+id/imageView2"
+            android:layout_marginTop="28dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:text="upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/imageView2"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Username"
+            android:ems="10"
+            android:layout_below="@+id/button"
+            android:layout_alignLeft="@+id/imageView2"
+            android:layout_alignStart="@+id/imageView2"
+            android:layout_marginTop="21dp"
+            android:id="@+id/editText2" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_below="@+id/editText2"
+            android:layout_alignRight="@+id/editText2"
+            android:layout_alignEnd="@+id/editText2"
+            android:id="@+id/editText3"
+            android:text="Password" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:layout_below="@+id/editText7"
+            android:layout_alignLeft="@+id/editText7"
+            android:layout_alignStart="@+id/editText7"
+            android:id="@+id/editText8"
+            android:text="Address" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Fullname"
+            android:ems="10"
+            android:id="@+id/editText7"
+            android:layout_below="@+id/editText3"
+            android:layout_alignLeft="@+id/editText3"
+            android:layout_alignStart="@+id/editText3" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText9"
+            android:layout_below="@+id/editText8"
+            android:layout_alignLeft="@+id/editText8"
+            android:layout_alignStart="@+id/editText8"
+            android:layout_marginTop="35dp"
+            android:text="telp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:layout_below="@+id/editText9"
+            android:layout_alignRight="@+id/editText9"
+            android:layout_alignEnd="@+id/editText9"
+            android:id="@+id/editText10"
+            android:text="email" />
+
+        <TextView
+            android:text="Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editText7"
+            android:layout_alignRight="@+id/textView14"
+            android:layout_alignEnd="@+id/textView14"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/textView15" />
+
+        <TextView
+            android:text="Nama Lengkap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editText8"
+            android:layout_alignLeft="@+id/textView15"
+            android:layout_alignStart="@+id/textView15"
+            android:layout_marginBottom="11dp"
+            android:id="@+id/textView16" />
+
+        <TextView
+            android:text="Alamat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView16"
+            android:layout_alignRight="@+id/textView16"
+            android:layout_alignEnd="@+id/textView16"
+            android:layout_marginTop="11dp"
+            android:id="@+id/textView17"
+            android:layout_alignLeft="@+id/textView16"
+            android:layout_alignStart="@+id/textView16" />
+
+        <TextView
+            android:text="No. Telp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editText9"
+            android:layout_alignLeft="@+id/textView17"
+            android:layout_alignStart="@+id/textView17"
+            android:layout_marginBottom="11dp"
+            android:id="@+id/textView18" />
+
+        <TextView
+            android:text="Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView18"
+            android:layout_alignLeft="@+id/textView18"
+            android:layout_alignStart="@+id/textView18"
+            android:layout_marginTop="11dp"
+            android:id="@+id/textView19" />
+
+        <TextView
+            android:text="Username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView14"
+            android:layout_alignBaseline="@+id/editText2"
+            android:layout_alignBottom="@+id/editText2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="29dp"
+            android:layout_marginStart="29dp" />
+
+    </RelativeLayout>
 </FrameLayout>
