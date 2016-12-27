@@ -1,13 +1,33 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/atas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context="com.masbie.papb_pa.Home">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/len"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home" />
+        android:gravity="bottom|center|right"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <android.support.design.widget.FloatingActionButton
+
+            android:id="@+id/tologin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:src="@android:drawable/sym_action_chat"
+            app:backgroundTint="@color/colorPrimary"
+            app:layout_anchor="@id/len"
+            app:useCompatPadding="true" />
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

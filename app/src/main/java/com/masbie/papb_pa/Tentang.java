@@ -2,14 +2,12 @@ package com.masbie.papb_pa;
 
 
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
 
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
-
 
 public class Tentang extends AppCompatActivity {
 

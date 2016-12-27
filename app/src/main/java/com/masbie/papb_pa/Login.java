@@ -1,108 +1,159 @@
 package com.masbie.papb_pa;
 
-import android.content.Context;
-import android.net.Uri;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Login.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Login#newInstance} factory method to
- * create an instance of this fragment.
+ * A login screen that offers login via email/password.
+ * http://sourcey.com/beautiful-android-login-and-signup-screens-with-material-design/
  */
-public class Login extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
-    public Login() {
-        // Required empty public constructor
-    }
+public class Login extends AppCompatActivity implements View.OnClickListener {
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Login.
+     * Id to identity READ_CONTACTS permission request.
      */
-    // TODO: Rename and change types and number of parameters
-    public static Login newInstance(String param1, String param2) {
-        Login fragment = new Login();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private Button upButton;
+    private static final int REQUEST_READ_CONTACTS = 0;
+    public static final String LOGIN_URL = "http://192.168.20.59/pgkba/";
+
+    public static final String KEY_USERNAME="username";
+    public static final String KEY_PASSWORD="password";
+
+    private EditText editTextUsername;
+    private EditText editTextPassword;
+
+
+    private String username;
+    private String password;
+
+    /**
+     * A dummy authentication store containing known user names and passwords.
+     * TODO: remove after connecting to a real authentication system.
+     */
+    private static final String[] DUMMY_CREDENTIALS = new String[]{
+            "foo@example.com:hello", "bar@example.com:world"
+    };
+    /**
+     * Keep track of the login task to ensure we can cancel it if requested.
+     */
+
+    // UI references.
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        setContentView(R.layout.fragment_login);
+
+        editTextUsername = (EditText) findViewById(R.id.input_email);
+        editTextPassword = (EditText) findViewById(R.id.input_password);
+
+        upButton = (Button) findViewById(R.id.btn_login);
+        upButton.setTextColor(Color.BLACK);
+        upButton.setOnClickListener(this);
+//        upButton.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                attemptLogin();
+//                  goToProfile();
+//            }
+//        });
+    }
+
+    private void goToProfile() {
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("login", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("akses", false);
+        editor.putString("user", username);
+        editor.commit();
+        finish();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void onClick(View view) {
+        userLogin();
     }
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * Represents an asynchronous login/registration task used to authenticate
+     * the user.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    private void userLogin() {
+        username = editTextUsername.getText().toString().trim();
+        password = editTextPassword.getText().toString().trim();
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("username", username);
+
+        final ProgressDialog progressDialog = new ProgressDialog(Login.this);
+//        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.trim().equals("success")){
+                            goToProfile();
+                            progressDialog.dismiss();
+                        }else{
+                            Toast.makeText(Login.this,response,Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Login.this,error.toString(),Toast.LENGTH_LONG ).show();
+                        progressDialog.dismiss();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String,String>();
+                map.put(KEY_USERNAME,username);
+                map.put(KEY_PASSWORD,password);
+                return map;
+            }
+        };
+        TextView daftar = (TextView) findViewById(R.id.link_signup);
+        daftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent kedaftar=new Intent(Login.this, Daftar.class);
+                startActivity(kedaftar);
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+    @Override
+    public void onBackPressed() {
+        // Disable going back to the MainActivity
+        moveTaskToBack(true);
     }
 }
+

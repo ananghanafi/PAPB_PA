@@ -1,12 +1,17 @@
 package com.masbie.papb_pa;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 
 /**
@@ -26,7 +31,7 @@ public class Home extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    FloatingActionButton floatinglogin;
     private OnFragmentInteractionListener mListener;
 
     public Home() {
@@ -63,8 +68,10 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,5 +111,20 @@ public class Home extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        floatinglogin = (FloatingActionButton) view.findViewById(R.id.tologin);
+        floatinglogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), Login.class);
+                getActivity().startActivity(i);
+
+            }
+        });
+
     }
 }

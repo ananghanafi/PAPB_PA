@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/msbshpkc"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,7 +21,19 @@
         <activity
             android:name=".Splash"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.AppBarOverlay"></activity>
+            android:theme="@style/AppTheme.Dark"></activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Dark"></activity>
+        <activity
+            android:name=".Tentang"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Dark"></activity>
+        <activity
+            android:name=".Daftar"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Dark"></activity>
     </application>
 
 </manifest>

@@ -3,13 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.masbie.papb_pa.Tentang">
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    tools:context="com.masbie.papb_pa.Tentang"
+   >
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imageSplash"
+
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:srcCompat="@drawable/contact"
+        app:srcCompat="@drawable/msbshpkc"
         android:layout_gravity="center_horizontal"
         />
 
@@ -18,7 +22,7 @@
         android:id="@+id/textSplash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="16dp"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardElevation="3dp"
@@ -28,6 +32,7 @@
             style="@style/Widget.CardContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
@@ -35,12 +40,12 @@
                 android:layout_height="wrap_content"
                 android:text="Assalamu'alaikum"
                 android:layout_gravity="center"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Saya"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 

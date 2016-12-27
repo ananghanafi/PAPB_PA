@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,11 +20,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Profile.OnFragmentInteractionListener, Pembelian.OnFragmentInteractionListener,
-        whislist.OnFragmentInteractionListener, Contact.OnFragmentInteractionListener, History.OnFragmentInteractionListener, Daftar.OnFragmentInteractionListener,
-        Home.OnFragmentInteractionListener, Keluar.OnFragmentInteractionListener {
+        whislist.OnFragmentInteractionListener, Contact.OnFragmentInteractionListener, History.OnFragmentInteractionListener,
+        Home.OnFragmentInteractionListener, Keluar.OnFragmentInteractionListener{
     DrawerLayout drawerLayout;
     CollapsingToolbarLayout collapsingToolbarLayout;
 
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
 
     @Override
     public void onBackPressed() {
@@ -126,8 +130,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_history) {
             fragmentClass = History.class;
             setTitle("History");
-        } else if (id == R.id.nav_about) {
-            fragmentClass = Tentang.class;
+        }
+        else if (id == R.id.nav_about) {
+            Intent i = new Intent(this, Tentang.class);
+            this.startActivity(i);
             setTitle("Tentang");
         } else if (id == R.id.nav_exit) {
             fragmentClass = Keluar.class;
