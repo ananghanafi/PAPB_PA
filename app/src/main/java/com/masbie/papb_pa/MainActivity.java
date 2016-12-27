@@ -25,7 +25,7 @@ import android.view.ViewGroup;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Profile.OnFragmentInteractionListener, Pembelian.OnFragmentInteractionListener,
         whislist.OnFragmentInteractionListener, Contact.OnFragmentInteractionListener, History.OnFragmentInteractionListener,
-        Home.OnFragmentInteractionListener, Keluar.OnFragmentInteractionListener{
+        Home.OnFragmentInteractionListener, Keluar.OnFragmentInteractionListener {
     DrawerLayout drawerLayout;
     CollapsingToolbarLayout collapsingToolbarLayout;
 
@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//
-//        SharedPreferences pref = getApplicationContext().getSharedPreferences("login", 0);
-//        if(pref.getBoolean("akses", true)){
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("Main", 0);
+//        if (pref.getBoolean("akses", true)) {
 //            Intent intent = new Intent(this, MainActivity.class);
 //            this.startActivity(intent);
 //        }
-//        if(pref.getBoolean("pertama", true)){
+//        if (pref.getBoolean("pertama", true)) {
 //            Intent intent = new Intent(this, Splash.class);
 //            this.startActivity(intent);
 //        }
@@ -130,14 +130,14 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_history) {
             fragmentClass = History.class;
             setTitle("History");
-        }
-        else if (id == R.id.nav_about) {
+        } else if (id == R.id.nav_about) {
             Intent i = new Intent(this, Tentang.class);
             this.startActivity(i);
             setTitle("Tentang");
         } else if (id == R.id.nav_exit) {
-            fragmentClass = Keluar.class;
-            setTitle("Test");
+            Intent i = new Intent(this, Login.class);
+            this.startActivity(i);
+            setTitle("Keluar");
         }
 
 

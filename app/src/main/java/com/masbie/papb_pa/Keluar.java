@@ -1,6 +1,7 @@
 package com.masbie.papb_pa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -54,10 +55,8 @@ public class Keluar extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+
     }
 
     @Override
@@ -65,6 +64,7 @@ public class Keluar extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_keluar, container, false);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
