@@ -36,15 +36,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("Main", 0);
-//        if (pref.getBoolean("akses", true)) {
-//            Intent intent = new Intent(this, MainActivity.class);
-//            this.startActivity(intent);
-//        }
-//        if (pref.getBoolean("pertama", true)) {
-//            Intent intent = new Intent(this, Splash.class);
-//            this.startActivity(intent);
-//        }
         if (savedInstanceState == null) {
             Fragment fragment = null;
             Class fragmentClass = null;
@@ -134,13 +125,21 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(this, Tentang.class);
             this.startActivity(i);
             setTitle("Tentang");
+            return true;
         } else if (id == R.id.nav_exit) {
             Intent i = new Intent(this, Login.class);
             this.startActivity(i);
             setTitle("Keluar");
+            return true;
         }
 
-
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

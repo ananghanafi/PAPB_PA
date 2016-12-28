@@ -8,6 +8,22 @@
     tools:context="com.masbie.papb_pa.Home">
 
     <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/runnable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/msbshpkc"/>
+
+    <ImageView
+        android:id="@+id/runnable1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/profile"/>
+    <ImageView
+        android:id="@+id/runnable2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_menu_slideshow"/>
     <LinearLayout
         android:id="@+id/len"
         android:layout_width="match_parent"
