@@ -45,19 +45,19 @@ public class whislist extends Fragment {
             R.drawable.bajuhitamdepan,
             R.drawable.bajuhijaudepan,
     };
-    int[] imagebawah = new int[]{
-            R.drawable.paket,
-            R.drawable.paket,
-            R.drawable.paket,
-    };    int[] imagebawah1 = new int[]{
-            R.drawable.kirim,
-            R.drawable.kirim,
-            R.drawable.kirim,
-    };    int[] imagebawah2 = new int[]{
-            R.drawable.diterimawar,
-            R.drawable.diterima,
-            R.drawable.diterima,
-    };
+//    int[] imagebawah = new int[]{
+//            R.drawable.paket,
+//            R.drawable.paket,
+//            R.drawable.paket,
+//    };    int[] imagebawah1 = new int[]{
+//            R.drawable.kirim,
+//            R.drawable.kirim,
+//            R.drawable.kirim,
+//    };    int[] imagebawah2 = new int[]{
+//            R.drawable.diterimawar,
+//            R.drawable.diterima,
+//            R.drawable.diterima,
+//    };
     String[] deswhislist = new String[]{
             "Selesai ",
             "Masih dalam perjalanan ",
@@ -108,13 +108,13 @@ public class whislist extends Fragment {
             hm.put("titlewhislist", titlewhislist[i]);
             hm.put("deswhislist", deswhislist[i]);
             hm.put("imagekiri", Integer.toString(imagekiri[i]));
-            hm.put("imagebawah", Integer.toString(imagebawah[i]));
-            hm.put("imagebawah1", Integer.toString(imagebawah1[i]));
-            hm.put("imagebawah2", Integer.toString(imagebawah2[i]));
+//            hm.put("imagebawah", Integer.toString(imagebawah[i]));
+//            hm.put("imagebawah1", Integer.toString(imagebawah1[i]));
+//            hm.put("imagebawah2", Integer.toString(imagebawah2[i]));
             list.add(hm);
         }
-        String[] dari = {"imagekiri", "titlewhislist", "deswhislist", "imagebawah", "imagebawah1", "imagebawah2"};
-        int[] ke = {R.id.imagekiri, R.id.titlewhislist, R.id.deswhislist, R.id.img1, R.id.img2, R.id.img3};
+        String[] dari = {"imagekiri", "titlewhislist", "deswhislist"};
+        int[] ke = {R.id.imagekiri, R.id.titlewhislist, R.id.deswhislist};
         SimpleAdapter simpleAdapter = new SimpleAdapter(v.getContext(), list, R.layout.listview_whislist, dari, ke);
         ListView listView = (ListView) v.findViewById(R.id.list_view);
         listView.setAdapter(simpleAdapter);
