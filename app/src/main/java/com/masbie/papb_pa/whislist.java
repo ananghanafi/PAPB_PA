@@ -7,6 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -28,6 +35,34 @@ public class whislist extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    String[] titlewhislist = new String[]{
+            "Baju biru ",
+            "Baju hitam ",
+            "Baju hijau ",
+    };
+    int[] imagekiri = new int[]{
+            R.drawable.bajubirudepan,
+            R.drawable.bajuhitamdepan,
+            R.drawable.bajuhijaudepan,
+    };
+    int[] imagebawah = new int[]{
+            R.drawable.paket,
+            R.drawable.paket,
+            R.drawable.paket,
+    };    int[] imagebawah1 = new int[]{
+            R.drawable.kirim,
+            R.drawable.kirim,
+            R.drawable.kirim,
+    };    int[] imagebawah2 = new int[]{
+            R.drawable.diterimawar,
+            R.drawable.diterima,
+            R.drawable.diterima,
+    };
+    String[] deswhislist = new String[]{
+            "Selesai ",
+            "Masih dalam perjalanan ",
+            "Masih dalam perjalanan",
+    };
 
     public whislist() {
         // Required empty public constructor
@@ -58,13 +93,32 @@ public class whislist extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_whislist, container, false);
+        View v = inflater.inflate(R.layout.fragment_whislist, container, false);
+        List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+        for (int i = 0; i < 3; i++) {
+            HashMap<String, String> hm = new HashMap<String, String>();
+
+            hm.put("titlewhislist", titlewhislist[i]);
+            hm.put("deswhislist", deswhislist[i]);
+            hm.put("imagekiri", Integer.toString(imagekiri[i]));
+            hm.put("imagebawah", Integer.toString(imagebawah[i]));
+            hm.put("imagebawah1", Integer.toString(imagebawah1[i]));
+            hm.put("imagebawah2", Integer.toString(imagebawah2[i]));
+            list.add(hm);
+        }
+        String[] dari = {"imagekiri", "titlewhislist", "deswhislist", "imagebawah", "imagebawah1", "imagebawah2"};
+        int[] ke = {R.id.imagekiri, R.id.titlewhislist, R.id.deswhislist, R.id.img1, R.id.img2, R.id.img3};
+        SimpleAdapter simpleAdapter = new SimpleAdapter(v.getContext(), list, R.layout.listview_whislist, dari, ke);
+        ListView listView = (ListView) v.findViewById(R.id.list_view);
+        listView.setAdapter(simpleAdapter);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
