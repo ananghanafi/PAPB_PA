@@ -237,7 +237,6 @@ public class Home extends Fragment {
                 // Tidak boleh mengubah/memanipulasi elemen UI
                 // dari Thread yang bukan Thread UI
                 //textAngka.setText(angka.toString());
-                System.out.println("Angka"+angka);
             }
 
         }
