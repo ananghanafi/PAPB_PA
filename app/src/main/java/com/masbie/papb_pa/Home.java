@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.Random;
@@ -32,6 +33,7 @@ public class Home extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     // Deklarasi thread
     private Thread threadBackground;
+    ImageButton imgbt;
 
     // Deklarasi handler sebagai jembatan antar Thread
     private Handler handler = new Handler();
@@ -131,6 +133,14 @@ public class Home extends Fragment {
         this.promo1 = (ImageView) rootView.findViewById(R.id.runnable);
         this.promo2 = (ImageView) rootView.findViewById(R.id.runnable1);
         this.promo3 = (ImageView) rootView.findViewById(R.id.runnable2);
+        this.imgbt = (ImageButton) rootView.findViewById(R.id.p1);
+        imgbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent imgbt = new Intent(getActivity(), DetailBaju.class);
+                startActivity(imgbt);
+            }
+        });
         return rootView;
     }
 
