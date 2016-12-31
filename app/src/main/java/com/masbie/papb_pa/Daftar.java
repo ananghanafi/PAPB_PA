@@ -50,7 +50,7 @@ public class Daftar extends AppCompatActivity {
 
             }
         });
-        bt.setOnClickListener(new View.OnClickListener() {
+        bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Daftar.this);
