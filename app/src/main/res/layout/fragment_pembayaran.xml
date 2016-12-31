@@ -111,6 +111,7 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:background="@color/colorPrimary"
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

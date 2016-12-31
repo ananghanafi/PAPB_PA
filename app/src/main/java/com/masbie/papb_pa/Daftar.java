@@ -19,9 +19,10 @@ import java.io.FileNotFoundException;
 
 public class Daftar extends AppCompatActivity {
 
-    Button bt;
+    Button bt, bt1;
     ImageView profil;
-    private Thread threadBackground;
+
+    private Thread threadBackground, threadBackground1;
 
     // Deklarasi handler sebagai jembatan antar Thread
     private Handler handler = new Handler();
@@ -31,6 +32,7 @@ public class Daftar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_daftar);
         bt = (Button) findViewById(R.id.button);
+        bt1 = (Button) findViewById(R.id.daftar);
         profil = (ImageView) findViewById(R.id.imageView2);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,8 +47,23 @@ public class Daftar extends AppCompatActivity {
                     // Jalankan Thread
                     threadBackground.start();
                 }
-                Intent kephone = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(kephone, 0);
+
+            }
+        });
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Daftar.this);
+                builder.setMessage("Proses pendaftaran....");
+                builder.show();
+                if (threadBackground1 == null
+                        || threadBackground1.getState() == Thread.State.TERMINATED) {
+                    threadBackground1 = new Thread(runnableBackground4);
+
+                    // Jalankan Thread
+                    threadBackground1.start();
+                }
+
             }
         });
 
@@ -102,6 +119,46 @@ public class Daftar extends AppCompatActivity {
         }
     };
     Runnable runnableUI3 = new Runnable() {
+        @Override
+        public void run() {
+            Intent kephone = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(kephone, 0);
+        }
+    };
+    Runnable runnableBackground4 = new Runnable() {
+
+        @Override
+        public void run() {
+
+            try {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
+//                builder.setMessage("Tunggu Sebentar ya....");
+//                builder.show();
+                Thread.sleep(1000);
+                // Kirimkan angka random ke Thread UI melalui handler
+                // Runnable yan dijalankan di Thread UI adalah runnableUI
+                handler.post(runnableUI4);
+
+                // Set delay sebelum menggenerate angka lainnya.
+
+
+                // Jika terjadi exception, yaitu pada saat sleep tombol stop diklik
+                // Telan exceptionnya
+            } catch (
+                    Exception ex
+                    )
+
+            {
+            }
+
+            // Tidak boleh mengubah/memanipulasi elemen UI
+            // dari Thread yang bukan Thread UI
+            //textAngka.setText(angka.toString());
+
+
+        }
+    };
+    Runnable runnableUI4 = new Runnable() {
         @Override
         public void run() {
             Intent kedaftar = new Intent(Daftar.this, MainActivity.class);
