@@ -131,7 +131,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView12"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/editText6"
+        android:layout_alignStart="@+id/editText6" />
 
     <Spinner
         android:id="@+id/spinner7"
@@ -139,7 +141,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView13"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/editText11"
+        android:layout_alignStart="@+id/editText11" />
 
     <EditText
         android:id="@+id/editText4"
