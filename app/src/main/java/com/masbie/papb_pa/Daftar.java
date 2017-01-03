@@ -28,15 +28,15 @@ public class Daftar extends AppCompatActivity {
     private Handler handler = new Handler();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //method create thread
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_daftar);
-        bt = (Button) findViewById(R.id.button);
+        bt = (Button) findViewById(R.id.button); //inisialisasi untuk fungsi button
         bt1 = (Button) findViewById(R.id.daftar);
         profil = (ImageView) findViewById(R.id.imageView2);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { //fungsi thread button untuk uplad
                 AlertDialog.Builder builder = new AlertDialog.Builder(Daftar.this);
                 builder.setMessage("Tunggu Akses....");
                 builder.show();
@@ -52,7 +52,7 @@ public class Daftar extends AppCompatActivity {
         });
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { //fungsi thread button untuk proses daftar
                 AlertDialog.Builder builder = new AlertDialog.Builder(Daftar.this);
                 builder.setMessage("Proses pendaftaran....");
                 builder.show();

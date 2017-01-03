@@ -33,6 +33,8 @@ public class Pembayaran extends AppCompatActivity {
         spinner3 = (Spinner) findViewById(R.id.spinner5);
         spinner4 = (Spinner) findViewById(R.id.spinner6);
         Button bt = (Button) findViewById(R.id.button);
+
+        Button bt1 = (Button) findViewById(R.id.buttonDetail);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +48,14 @@ public class Pembayaran extends AppCompatActivity {
                     // Jalankan Thread
                     threadBackground.start();
                 }
+
+            }
+        });
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent keDetail = new Intent(Pembayaran.this, DetailPembayaran.class);
+                startActivity(keDetail);
 
             }
         });
